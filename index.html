@@ -13,5 +13,86 @@
         <p><strong>Learning Goal:</strong> Understanding the basics of Git and GitHub for version control and collaboration.</p>
     </div>
     </header>
+
+    <section>
+        <h2>Product Dashboard</h2>
+        <div class="buttons">
+            <a href="https://github.com/DevAkiti/Frontend-version-control-task-Francis-Akiti" target="_blank"><button id="show-all">GitHub Repository</button></a>
+            <button id="show-all">Show All Items (.map)</button>
+            <button id="show-tech">Tech Only (.filter + .map)</button>
+            <button id="total">Total Value (.reduce)</button>
+            <button id="log-names" class="info">Alert Product (.forEach)</button>
+            <button id="remove-first" class="delete">Remove First Item (.splice)</button>
+        </div>
+
+        <div id="product-container" class="product-grid"></div>
+        <div id="total-price"></div>
+    </section>
+
+    <script>
+        const products = [
+            { id: 1, name: "Wireless Mouse", price: 25, category: "tech" },
+            { id: 2, name: "Personal Journal", price: 20, category: "stationery" },
+            { id: 3, name: "Mechanical Keyboard", price: 90, category: "tech" },
+            { id: 4, name: "Gel Pen Set", price: 8, category: "stationery" },
+            { id: 5, name: "Monitor Stand", price: 45, category: "tech" },
+            { id: 6, name: "PC Lamp", price: 18, category: "tech" },
+            { id: 7, name: "Journal Jacket", price: 15, category: "stationery" },
+            { id: 8, name: "Phone Stand", price: 30, category: "tech" }
+        ];
+
+        const productContainer = document.getElementById("product-container");
+        const totalPrice = document.getElementById("total-price");
+
+        function displayProducts(productsArray) {
+            totalPrice.innerHTML = ""; 
+            
+            const htmlCards = productsArray.map(product => {
+                return `
+                    <div class="product-card">
+                        <h3>${product.name}</h3>
+                        <p>Category: <strong>${product.category}</strong></p>
+                        <p>Price: $${product.price}</p>
+                    </div>
+                `;
+            }).join("");
+            productContainer.innerHTML = htmlCards;
+        }
+
+        function filterTechProducts() {
+            const techItems = products.filter(product => product.category === "tech");
+            displayProducts(techItems);
+        }
+
+        function calculateTotalInventory() {
+            const totalSum = products.reduce((accumulator, currentProduct) => accumulator + currentProduct.price, 0);
+            totalPrice.innerHTML = `<div class="stats-box">Total Value of Remaining Stock: $${totalSum}</div>`;
+        }
+
+        function alertProductNames() {
+            let namesList = [];
+            products.forEach(product => {
+                namesList.push(product.name);
+            });
+            alert("Current Inventory Items:\n" + namesList.join("\n"));
+        }
+
+        function removeFirstProduct() {
+            if (products.length > 0) {
+                const removedItem = products.splice(0, 1);
+                alert(`Removed: ${removedItem[0].name}`)
+                displayProducts(products);
+            } else {
+                alert("Nothing left to remove!");
+            }
+        }
+        document.getElementById("show-all").addEventListener("click", () => displayProducts(products));
+        document.getElementById("show-tech").addEventListener("click", filterTechProducts);
+        document.getElementById("total").addEventListener("click", calculateTotalInventory);
+        document.getElementById("log-names").addEventListener("click", alertProductNames);
+        document.getElementById("remove-first").addEventListener("click", removeFirstProduct);
+
+        displayProducts(products);
+    </script>
 </body>
 </html>
