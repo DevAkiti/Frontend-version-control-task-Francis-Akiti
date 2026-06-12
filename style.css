@@ -16,3 +16,60 @@ h1, h2{ color: #2c3e50; }
     margin-bottom: 1.25rem;
     border-radius: 0.25rem;
 }
+
+.buttons{ 
+    margin-bottom: 1.25rem;
+    display:flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+button{
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    width: 14rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.delete{
+    background-color: #e74c3c;
+}
+
+#total{
+    background-color: #13b657;
+}
+
+.info{background-color: #0adcbd;}
+
+.product-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.product-card{
+    background: rgb(115, 216, 229);
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.stats-box{
+    background-color: #2ecc71;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1.25rem;
+    font-size: 1.125rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 400;
+}
